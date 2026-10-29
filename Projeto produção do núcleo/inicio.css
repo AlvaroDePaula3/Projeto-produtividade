@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root{
+    --vivoType: "Vivo Type";
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    grid-template-columns: 1fr 0fr;
+}
+.divisoriaDoFormulario{
+    width: 350px;
+    min-height: 330px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 15px;
+    
+}
+
+.divisoriaDoFormulario h3{
+    color: #660099;
+    font-size: 15px;
+    margin-bottom: 8vh;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.ladoFormulario h2{
+    margin-bottom: 10vh;
+    font-family: var(--vivoType);
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botaoEntrar{
+    width: 16vw;
+    height: 5vh;
+    background-color: #660099;
+    color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    cursor: pointer;
+    border-radius: 15px;
+    outline: none;
+    border: solid 1px #731a9f;
+}
+
+.primeiroAcesso{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.primeiroAcesso span, a{
+    color: gray;
+    font-family: var(--vivoType);
+}
+
+.elementosInicio{
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"],
+input[type="password"]
+{
+    height: 40px;
+    width: 220px;
+    border-radius: 12px;
+    background-color:#ffffff;
+    border-color: #9d05a5;
+}
+
+input{
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid #660099;
+    box-shadow: none;
+}
+
+.containerBotao{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ladoFormulario{
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.ladoImagem{
+    flex:1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ladoImagem img{
+    height: 100vh;
+    width: 50vw;
+    border-radius: 40px;
+}
+
+@media (max-width: 1032px) {
+    .ladoImagem{
+        display: none;
+    }
+
+     .container{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ladoFormulario{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .ladoFormulario h2{
+        text-align: center;
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .divisoriaDoFormulario{
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .elementosInicio{
+        width: 100%;
+    }
+
+    .primeiroAcesso{
+        font-size: 80%;
+    }
+
+    input[type="text"],
+    input[type="password"]{
+        width: 100%;
+    }
+
+    .botaoEntrar{
+        width: 100%;
+        min-width: 200px;
+
+    }
+
+}

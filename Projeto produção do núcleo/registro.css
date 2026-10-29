@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+
+
+:root {
+    --vivoType: "Vivo Type";
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f5f7; /* Cor de fundo suave opcional para destacar o card */
+}
+
+
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+.ladoDoFormulario {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.ladoDaImagem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.ladoDaImagem img {
+    height: 100vh;
+    width: 50vw;
+    border-radius: 40px;
+    object-fit: cover; /* Garante que a imagem não seja esmagada */
+}
+
+
+
+.divisoriaFormularioCadastro {
+    width: 30vw;
+    height: 65vh;
+    display: flex;
+    flex-direction: column; /* Necessário para alinhar o h3 e o form corretamente */
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+
+
+.ladoDoFormulario h3 {
+    font-family: var(--vivoType);
+    margin-bottom: 3vh;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.jaCadastrado span, a {
+    font-family: var(--vivoType);
+    color: gray;
+}
+
+
+
+input[type="text"] {
+    border-radius: 12px;
+    height: 40px;
+    width: 220px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 0 15px; /* Adicionado padding para o texto não encostar na borda */
+}
+
+
+
+.botaoRegistrar {
+    background-color: #660099;
+    color: #ffffff;
+    width: 16vw;
+    height: 50px; /* Mudado de vh para px para o botão não esmagar em telas baixas */
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+
+/* =========================================
+   MEDIA QUERY: Telas menores que 1032px
+========================================= */
+@media (max-width: 1032px) {
+.container {
+    flex-direction: column; /* Empilha a imagem e o formulário */
+    height: auto;
+    min-height: 100vh;
+}
+
+
+
+.ladoDaImagem {
+    display: none;
+}
+
+.ladoDoFormulario {
+    padding: 40px 20px;
+}
+
+
+
+.divisoriaFormularioCadastro {
+    width: 90vw; /* Card expande para aproveitar melhor o espaço do celular */
+    max-width: 450px;
+    height: auto;
+    min-height: 50vh;
+    padding: 40px 20px; /* Troca altura fixa por padding interno */
+}
+
+
+
+input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+}
+
+.botaoRegistrar {
+    width: 100%;
+    min-width: 200px;}
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="paginaInicial.css">
+</head>
+<body>
+    <nav>
+        <div>
+            <h2 class="msgBoasVindas"> Olá Colaborador</h2>
+        </div>
+        <div class="navegacaoProducao">
+        <ul class="listaNavegacao">
+            <li class="elementosListaNavegacao">
+                <a href="./paginaInicial.html">Tarefas</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <a href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <a href="./equipe.html"> Equipe</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <label class="temaEscuro">
+                    <input type="checkbox" id="checkTemaEscuro">
+                    <span class="deslizar"></span>
+                </label>
+            </li>
+            <li class="elementosListaNavegacao">
+                <!-- tem um id e uma classe, pois, a classe é para o CSS
+                 o id é para o JS-->
+                 <a href="./Inicio.html">
+                     <button class="botaoSair" id="botaoSair"> Sair </button>
+                 </a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="registrarAtividade">
+        <select name="atividades" id="Atividades">
+            <option value="atividade1"> Atividade 1</option>
+            <option value="atividade2"> Atividade 2</option>
+            <option value="atividade3"> Atividade 3</option>
+            <option value="atividade4"> Atividade 4</option>
+            <option value="atividade5"> Atividade 5</option>
+            <option value="atividade6"> Atividade 6</option>
+            <option value="atividade7"> Atividade 7</option>
+        </select>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

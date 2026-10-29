@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+
+
+:root {
+    /* essa primeira é a fonte da vivo */
+    --vivoType: "Vivo Type";
+    /* Daqui pra baixo são cores sem o tema escuro da vivo */
+    --bg-pagina: #f4f5f7;
+    --bg-nav: #ffffff;
+    --texto-principal: #1c1c1e;
+    --border-color: #dcdcdc;
+    --bg-select: #ffffff;
+}
+
+body.dark-mode{
+    --bg-pagina: #121214;
+    --bg-nav: #1e1e22;
+    --texto-principal: #f4f4f5;
+    --border-color: #333338;
+    --bg-select: #1e1e22;
+}
+
+body{
+    background-color: var(--bg-pagina);
+    color: var(--texto-principal);
+    min-height: 100vh;
+
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+nav{
+    background-color: var(--bg-nav);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.4s ease;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 5px;
+}
+
+nav a{
+    color: var(--texto-principal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.4s ease;
+}
+
+select, button{
+    background-color: var(--bg-select);
+    color: var(--texto-principal);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* daqui pra baixo é sobre o tema escuro */
+.temaEscuro{
+    display: block;
+    --largura-do-switch: 3.5em;
+    --altura-do-switch: 2em;
+    --tamanho-do-icone: 1.4em;
+    --slider-offset: 0.3em;
+    position: relative;
+    width: var(--largura-do-switch);
+    height: var(--altura-do-switch);
+}
+
+.temaEscuro input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.deslizar{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.deslizar:before{
+    position:absolute;
+    content:"";
+    height: var(--tamanho-do-icone, 1.4em);
+    width: var(--tamanho-do-icone, 1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset, 0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    transition: 0.4s;
+}
+
+input:checked + .deslizar{
+    background-color: #303136;
+}
+
+input:checked + .deslizar:before{
+    left: calc(100% - (var(--tamanho-do-icone, 1.4em) + var(--slider-offset, 0.3em)));
+    background: #303136;
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+.msgBoasVindas{
+    color: #660099;
+    font-family: var(--vivoType);
+    font-size: 1em;
+}
+
+.navegacaoProducao{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5rem;
+}
+
+.listaNavegacao{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.elementosListaNavegacao{
+    margin-left: 10rem;
+    justify-content: space-between;
+    font-family: var(--vivoType);
+    margin-top: 2rem;
+}
+
+.elementosListaNavegacao a:hover{
+    color: blueviolet;
+    transition: 0.5s;
+}
+
+.botaoSair{
+    width: 5rem;
+    height: 2rem;
+    cursor: pointer;
+}
