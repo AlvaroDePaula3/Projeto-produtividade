@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | produtividade</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav>
@@ -38,7 +39,119 @@
         </ul>
         </div>
     </nav>
+    <main class="containerDashboard">
+        <div class="filtroContainer">
+            <h2> Todos os Colaboradores </h2>
+            <div class="filtros">
+                <select id="filtroColaborador">
+                    <option value="todas">Todos os Colaboradores</option>
+                    <option>Eduardo Batista Oliveira de Souza</option>
+                    <option>Elias da Silva Melo</option>
+                    <option>Elisa Manuela Xavier Da Silva</option>
+                    <option>Fabio dos Santos Gomides</option>
+                    <option>Lucas Machado Ribeiro</option>
+                    <option>Patricia Gonçalvez Pereira</option>
+                    <option>Silvana Antonia De Souza Barcelos</option>
+                    <option>Tiago Maian Gomes Soares Pitombo</option>
+                    <option>Wallace Maesse Ribeiro Dimas</option>
+                </select>
 
-    <script src="script.js"></script>
+                <select id="filtroAtividade">
+            <option>Atividade 1</option>
+            <option>Atividade 2</option>
+            <option>Atividade 3</option>
+            <option>Atividade 4</option>
+            <option>Atividade 5</option>
+            <option>Atividade 6</option>
+            <option>Atividade 7</option>
+            <option>Atividade 8</option>
+            <option>Atividade 9</option>
+            <option>Atividade 10</option>
+        </select>
+            </div>
+        </div>
+    
+        <div class="containerMedias">
+            <div class="cardMedia">
+                <h3>Nº de Colaboradores:</h3>
+                <span class="valorMedia">11</span>
+            </div>
+
+            <div class="cardMedia">
+                <h3>Média de Atividades</h3>
+                <span class="valorMedia">0 minutos</span>
+            </div>
+    
+            <div class="cardMedia">
+                <h3>Média Falada</h3>
+                <span class="valorMedia">---</span>
+            </div>
+        </div>
+
+        <!-- Gráfico de semanas (últimas 4 semanas)-->
+        <div class="graficoWrapper">
+            <h3>Últimas 4 semanas (Atividades concluídas) </h3>
+            <canvas id="graficoSemanas"></canvas>
+        </div>
+
+        <!-- Gráfico de Mêses -->
+        <div class="graficoContainer">
+            <h3>Desempenho no Meses (Tempo em minutos)</h3>
+            <canvas id="graficoMeses"></canvas>
+        </div>
+
+        <div class="dashboardContainer">
+
+            <div class="eixoVertical">
+                <span>100</span>
+                <span>80</span>
+                <span>60</span>
+                <span>40</span>
+                <span>20</span>
+                <span>0</span>
+            </div>
+
+            <div class="areaGrafico">
+                <div class="linhaGrafico"></div>
+                <div class="linhaGrafico"></div>
+                <div class="linhaGrafico"></div>
+                <div class="linhaGrafico"></div>
+                <div class="linhaGrafico"></div>
+            </div>
+
+        </div>
+
+        <div class="eixoHorizontal">
+            <span>Jan/26</span>
+            <span>Fev/26</span>
+            <span>Mar/26</span>
+            <span>Abr/26</span>
+            <span>Mai/26</span>
+            <span>Jun/26</span>
+            <span>Jul/26</span>
+            <span>Ago/26</span>
+            <span>Set/26</span>
+            <span>Out/26</span>
+            <span>Nov/26</span>
+            <span>Dez/26</span>
+        </div>
+
+        <!-- 
+            <div class="resumo">
+    
+                <h2>Tabela Resumida: </h2>
+                <span>Atividade:</span>
+                <input type="text" id="nomeAtividade" readonly>
+                <span>Tempo Médio:</span>
+                <input type="time" id="" readonly>
+                <span>Quantidade:</span>
+                <input type="text" id="" readonly>
+                <span>Colaborador(es):</span>
+                <input type="text" id="" readonly>
+            </div>
+        -->
+    </main>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

@@ -58,12 +58,6 @@ nav a{
     transition: color 0.4s ease;
 }
 
-.registrarAtividade{
-    display: flex;
-    justify-content: center;
-    margin-top:50px;
-}
-
 select, button{
     background-color: var(--bg-select);
     color: var(--texto-principal);
@@ -163,4 +157,127 @@ input:checked + .deslizar:before{
     width: 5rem;
     height: 2rem;
     cursor: pointer;
+}
+
+/*daqui pra baixo é a área de interação do usuário */
+.containerAtividades {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.botaoAcao{
+    background-color: #660099;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.botaoAcao:hover{
+    background-color: #8a00cc;
+}
+
+.botaoAcao:disabled{
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.botaoSecundario{
+    background-color: transparent;
+    color: var(--texto-principal);
+    border: 1px solid var(--border-color);
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Grid e card das atividades */
+.gridAtividades{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* as classes card-atividade, tempo-execucao e atividade-encerrada correspondem diretamente ao JS */
+.card-atividade{
+    background-color: var(--bg-nav);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding:20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.card-atividade h4{
+    color: #660099;
+}
+
+.tempo-execucao{
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.atividade-encerrada{
+    opacity: 0.7;
+    border-left: 4px solid #28a745;
+}
+
+/* Pop-up */
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.conteudo-modal{
+    background-color: var(--bg-nav);
+    color: var(--texto-principal);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.grupoInput{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.grupoInput label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.grupoInput input, .grupoInput select{
+    background-color: var(--bg-pagina);
+    color: var(--texto-principal);
+    border: 1px solid var(--border-color);
+
+}
+
+.acoes-modal{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
 }

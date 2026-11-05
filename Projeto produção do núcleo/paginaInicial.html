@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Página Inicial </title>
     <link rel="stylesheet" href="paginaInicial.css">
 </head>
 <body>
@@ -39,18 +39,51 @@
         </div>
     </nav>
 
-    <div class="registrarAtividade">
-        <select name="atividades" id="Atividades">
-            <option value="atividade1"> Atividade 1</option>
-            <option value="atividade2"> Atividade 2</option>
-            <option value="atividade3"> Atividade 3</option>
-            <option value="atividade4"> Atividade 4</option>
-            <option value="atividade5"> Atividade 5</option>
-            <option value="atividade6"> Atividade 6</option>
-            <option value="atividade7"> Atividade 7</option>
-        </select>
-    </div>
+    <main class="containerAtividades">
+        <button id="botaoNovaAtividade" class="botaoAcao"> + Nova Atividade </button>
 
+        <div id="gridAtividades" class="gridAtividades"></div>
+    </main>
+    <!-- A divisória abaixo estará oculta -->
+    <div id="modalAtividade" class="modal-overlay">
+        <div class="conteudo-modal">
+            <h3> Lançar atividade</h3>
+
+                <div class="grupoInput">
+                    <label>Data:</label>
+                    <input type="date" id="dataAtividade" readonly>
+                </div>
+
+                <div class="grupoInput">
+                    <label>Hora de Início:</label>
+                    <input type="datetime" id="horaAtividade" readonly>
+                </div>
+
+                <div class="grupoInput">
+                    <label> Atividade </label>
+            <select id="selectAtividade">
+                <option value="atividade1"> Atividade 1</option>
+                <option value="atividade2"> Atividade 2</option>
+                <option value="atividade3"> Atividade 3</option>
+                <option value="atividade4"> Atividade 4</option>
+                <option value="atividade5"> Atividade 5</option>
+                <option value="atividade6"> Atividade 6</option>
+                <option value="atividade7"> Atividade 7</option>
+                <option value="atividade7"> Atividade 8</option>
+                <option value="atividade7"> Atividade 9</option>
+                <option value="atividade7"> Atividade 10</option>
+            </select>
+            </div>
+            <div class="grupoInput">
+                <label>Nome do Colaborador</label>
+                <input type="text" id="nomeAtividade" readonly>
+            </div>
+            <div class="acoes-modal">
+                <button id="botaoCancelar" class="botaoSecundario">Cancelar</button>
+                <button id="botaoLancar" class="botaoAcao">Lançar Atividade</button>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
