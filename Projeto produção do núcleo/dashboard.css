@@ -11,7 +11,7 @@
     /* essa primeira é a fonte da vivo */
     --vivoType: "Vivo Type";
     /* Daqui pra baixo são cores sem o tema escuro da vivo */
-    --bg-pagina: #f4f5f7;
+    --bg-pagina: #F5E8FA;
     --bg-nav: #ffffff;
     --texto-principal: #1c1c1e;
     --border-color: #dcdcdc;
@@ -38,7 +38,8 @@ body{
 }
 
 nav{
-    background-color: var(--bg-nav);
+    background: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(102, 0, 153, 1) 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,7 +56,7 @@ nav ul{
 }
 
 nav a{
-    color: var(--texto-principal);
+    color: #ffffff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.4s ease;
@@ -149,10 +150,12 @@ input:checked + .deslizar:before{
     justify-content: space-between;
     font-family: var(--vivoType);
     margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.002em;
 }
 
 .elementosListaNavegacao a:hover{
-    color: blueviolet;
+    color: #000000;
     transition: 0.5s;
 }
 
@@ -174,7 +177,8 @@ input:checked + .deslizar:before{
     width: 250px;
     height: 120px;
 
-    background: linear-gradient(265deg, rgb(150, 55, 197) 0%, var(--bg-pagina) 80%);
+    background: #FFFFFF;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(102, 0, 153, 1) 100%);
     border-radius: 12px;    
 
     border: 2px solid var(--border-color);
@@ -183,6 +187,7 @@ input:checked + .deslizar:before{
 
     justify-content: center;
     align-items: center;
+    color: #000000;
 }
 
 .valorMedia{
@@ -194,59 +199,23 @@ input:checked + .deslizar:before{
 /* Daqui pra cima é sobre os cards dos números,
 tanto os escritos automaticamente, quanto o da média */
 
-.dashboardContainer{
-    display: flex;
-    margin-top:20px;
-}
-
-.eixoVertical{
-    display: flex;
-    flex-direction:column;
-    justify-content: space-between;
-
-    height: 400px;
-
-    margin-right: 10px;
-}
-
-.areaGrafico{
-    height:400px;
-    width:100%;
-
-    border-left:2px solid #666;
-    border-bottom: 2px solid #666;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 5px;
-}
-
-.linhaDeGrafico{
-    width: 100%;
-    border-top: 1px solid #dcdcdc;
-}
-
-.eixoHorizontal{
-    margin-left:50px;
-
-    display: flex;
-    justify-content: space-between;
-
-    margin-top: 10px;
-}
-
 .containerDashboard{
     padding: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.filtrosContainer{
+.filtroContainer{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    background-color: var(--bg-pagina);
+    color: var(--texto-principal);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom: 4px solid #660099;
 }
 
 .filtros{
@@ -255,7 +224,7 @@ tanto os escritos automaticamente, quanto o da média */
 }
 
 /* Área dos gráficos com chart.js */
-.graficosWrapper{
+.graficoWrapper{
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -276,4 +245,44 @@ tanto os escritos automaticamente, quanto o da média */
     margin-bottom: 15px;
     color: var(--texto-principal);
     text-align: center;
+}
+
+.tabelaContainer{
+    margin-top: 40px;
+    background-color: var(--bg-nav);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top:4px solid #660099 ;
+}
+
+.tabelaContainer h3{
+    color: var(--texto-principal);
+    margin-bottom: 20px;
+}
+
+/* A partir daqui é o estilo da tabela */
+.tabela-dashboard{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-dashboard th,
+.tabela-dashboard td{
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--texto-principal);
+}
+
+.tabela-dashboard th{
+    background-color: var(--bg-pagina);
+    font-weight: 600;
+    color: #660099;
+}
+
+.tabela-dashboard tr:hover{
+    background-color: var(--bg-pagina);
+    transition: background-color 0.3s ease;
 }

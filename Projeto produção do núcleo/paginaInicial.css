@@ -11,11 +11,12 @@
     /* essa primeira é a fonte da vivo */
     --vivoType: "Vivo Type";
     /* Daqui pra baixo são cores sem o tema escuro da vivo */
-    --bg-pagina: #f4f5f7;
+    --bg-pagina: #F5E8FA;
     --bg-nav: #ffffff;
     --texto-principal: #1c1c1e;
     --border-color: #dcdcdc;
     --bg-select: #ffffff;
+    --border-text: #f4f4f5;
 }
 
 body.dark-mode{
@@ -24,6 +25,8 @@ body.dark-mode{
     --texto-principal: #f4f4f5;
     --border-color: #333338;
     --bg-select: #1e1e22;
+    --border-text: #1c1c1e;
+
 }
 
 body{
@@ -35,7 +38,8 @@ body{
 }
 
 nav{
-    background-color: var(--bg-nav);
+    background: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(102, 0, 153, 1) 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +56,7 @@ nav ul{
 }
 
 nav a{
-    color: var(--texto-principal);
+    color: #ffffff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.4s ease;
@@ -146,10 +150,12 @@ input:checked + .deslizar:before{
     justify-content: space-between;
     font-family: var(--vivoType);
     margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.002em;
 }
 
 .elementosListaNavegacao a:hover{
-    color: blueviolet;
+    color: #000000;
     transition: 0.5s;
 }
 
@@ -162,8 +168,55 @@ input:checked + .deslizar:before{
 /*daqui pra baixo é a área de interação do usuário */
 .containerAtividades {
     padding: 40px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
+}
+
+.linhaDivisoria{
+    margin: 40px 0;
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.grid-botoes-atividade {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+/* botões com todas as atividades */
+.botaoAtividade{
+    /*
+    background-color: var(--bg-nav);
+    */
+    color: #000;
+    border: 1px solid var(--border-color);
+    padding: 10px 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    min-height: 65px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: 0.3s;
+    background: #FFFFFF;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(102, 0, 153, 1) 100%);
+}
+
+.botaoAtividade:hover{
+    background-color: #660099;
+    color: #000;
+    border-color: #660099;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102,0,153,0.3);
+    box-shadow: 0px 5px 15px rgba(255, 0, 195, 0.35);
 }
 
 .botaoAcao{
@@ -186,21 +239,11 @@ input:checked + .deslizar:before{
     cursor: not-allowed;
 }
 
-.botaoSecundario{
-    background-color: transparent;
-    color: var(--texto-principal);
-    border: 1px solid var(--border-color);
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 /* Grid e card das atividades */
 .gridAtividades{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    margin-top: 30px;
 }
 
 /* as classes card-atividade, tempo-execucao e atividade-encerrada correspondem diretamente ao JS */
@@ -228,56 +271,4 @@ input:checked + .deslizar:before{
 .atividade-encerrada{
     opacity: 0.7;
     border-left: 4px solid #28a745;
-}
-
-/* Pop-up */
-.modal-overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-.conteudo-modal{
-    background-color: var(--bg-nav);
-    color: var(--texto-principal);
-    width: 90%;
-    max-width: 400px;
-    padding: 30px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.grupoInput{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.grupoInput label{
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.grupoInput input, .grupoInput select{
-    background-color: var(--bg-pagina);
-    color: var(--texto-principal);
-    border: 1px solid var(--border-color);
-
-}
-
-.acoes-modal{
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
 }
