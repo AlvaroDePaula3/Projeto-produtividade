@@ -130,6 +130,7 @@ input:checked + .deslizar:before{
     color: #660099;
     font-family: var(--vivoType);
     font-size: 1em;
+    white-space: nowrap;
 }
 
 .navegacaoProducao{
@@ -175,12 +176,10 @@ input:checked + .deslizar:before{
 }
 
 .areaColaboradores{
-    width: 70%;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     align-items: center;
-    gap:20px;
+    gap:15px;
     flex-direction: column;
 }
 
@@ -211,8 +210,9 @@ input:checked + .deslizar:before{
 
 /* Daqui pra baixo é o CSS da parte dos colaboradores */
 .cardColaborador{
-    width: 420px;
-    height: 60px;
+    width: 90%;
+    max-width: 500px;
+    height: 65px;
 
     background-color: var(--bg-nav);
     color: var(--texto-principal);
@@ -224,7 +224,8 @@ input:checked + .deslizar:before{
 
     position: relative;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid #660099;
 }
 
 body .dark-mode .cardColaborador{
@@ -232,7 +233,12 @@ body .dark-mode .cardColaborador{
 }
 
 .nomeColaborador{
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
 }
 
 .botaoRemover{
@@ -316,4 +322,33 @@ body .dark-mode .conteudoModal{
 
 #negarExclusao:hover{
     background-color: var(--bg-pagina);
+}
+
+@media(max-width: 900px){
+    nav{
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .navegacaoProducao{
+        height: auto;
+    }
+
+    .listaNavegacao{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .elementosListaNavegacao{
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .containerMedias, .graficoWrapper{
+        flex-direction: column;
+    }
+    .cardMedia, .graficoContainer, .tabelaContainer{
+        width: 100%;
+    }
 }

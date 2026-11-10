@@ -55,10 +55,39 @@ const pesosAtividades = {
     "suporte": 4.0,
     "acionamentoSwap": 1.0,
     "acionamentoSwapCedente": 2.0,
-    "escalonamentoHL5DIsolado": 1.0,
+    "acionamentoHL5DIsolado": 1.0,
     "escalonamentoDesvioDeSites": 1.0,
     "escalonamentoOltMaior8": 1.0,
     "escalonamentoOutlier": 1.0
+};
+
+//abaixo é o nome das atividades da forma que devem aparecer no gráfico e na tabela
+const nomesAtividadesVisuais = {
+    "carimboFibrasil": "CARIMBO FIBRASIL (AGG/OLT)",
+    "postarRsnac": "POSTAR RSNAC (2 EM 2 HORAS)",
+    "rsnacRisco": "POSTAR RSNAC (RISCO)",
+    "oltComutada": "OLT COMUTADA/ACIONAMENTO",
+    "reportDwdm": "REPORT DWDM",
+    "carimboDwdm": "CARIMBO DWDM",
+    "comiteHL4": "COMITÊ HL4",
+    "comiteOLT": "COMITÊ OLT",
+    "reportP1": "REPORT P1",
+    "reportGestao": "REPORT GESTÃO À VISTA",
+    "acionamentoAlarme":"ACIONAMENTO ALARME-INFRA",
+    "escalonamentoRisco":"ESCALONAMENTO RISCO",
+    "escalonamentoIsolamento":"ESCALONAMENTO ISOLAMENTO",
+    "reportDomus":"REPORT DOMUS/MUNICIPIO",
+    "escalonamentoHL5D":"ESCALONAMENTO HL5D ISOLADO",
+    "acionamentoDesvio":"ACIONAMENTO DESVIO DE SITES",
+    "reportOlt":"REPORT OLT COMUTADA",
+    "atualizacaoDeStatus":"ATUALIZAÇÃO DE STATUS (FALHA)",
+    "suporte":"SUPORTE",
+    "acionamentoSwap":"ACIONAMENTO SWAP",
+    "acionamentoSwapCedente":"ACIONAMENTO SWAP (SWAP CEDENTE)",
+    "acionamentoHL5DIsolado":"ACIONAMENTO HL5D ISOLADO",
+    "escalonamentoDesvioDeSites":"ESCALONAMENTO DESVIO DE SITES",
+    "escalonamentoOltMaior8":"ESCALONAMENTO OLT COMUTADA > 8 HORAS",
+    "escalonamentoOutlier":"ESCALONAMENTO OUTLIER P1"
 };
 
 //Essa variável é global, e ela guarda a instância do gráfico
@@ -118,7 +147,7 @@ function inicializarDashboard() {
         //Atualiza os cards superiores
         if(atividadesValidas.length > 0)
         {
-            const tempoTotal = atividadesValidas.reduce((acc, curr) => acc + curr.tempoGastoMinutos, 0);
+            const tempoTotal = atividadesValidas.reduce((acc, curr) => acc + (parseFloat(curr.tempoGastoMinutos) || 0), 0);
             const tempoMedio = Math.round(tempoTotal/atividadesValidas.length);
             document.getElementById("tempoMedioGeral").textContent = `${tempoMedio} min`;
         } else {
@@ -133,7 +162,8 @@ function inicializarDashboard() {
         const contagemAtividades = {};
 
         dados.forEach(dadoAtividade => {
-            contagemAtividades[dadoAtividade.atividade] = (contagemAtividades[dadoAtividade.atividade] || 0) + 1;
+            const nomeVisual = nomesAtividadesVisuais[dadoAtividade.atividade] || dadoAtividade.atividade;
+            contagemAtividades[nomeVisual] = (contagemAtividades[nomeVisual] || 0) + 1;
         });
 
         const contextAtv = document.getElementById('graficoSemanas').getContext('2d');
@@ -153,26 +183,33 @@ function inicializarDashboard() {
                     data: Object.values(contagemAtividades),
                     backgroundColor: 'rgba(102,0,153,1)',
                     borderWidth: 1,
-                    borderRadius: 4
+                    borderRadius: 4,
+                    maxBarThickness: 30,
                 }]
             },
             options:{
                 responsive:true,
+                maintainAspectRatio: false,
                 scales: { y: {beginAtZero: true}}
             }
         });
     }
 function renderizarTabela(dados){
     const corpoTabela = document.getElementById("corpoTabela");
+    const corpoTabelaAtividades = document.getElementById("corpoTabelaAtividades");
+
     corpoTabela.innerHTML = "";//Limpa a tabela
+    corpoTabelaAtividades.innerHTML = "";
 
     if(dados.length === 0)
     {
-        corpoTabela.innerHTML = `<tr><td colspan="5" style="text-align: center;"> Nenhum dado encontrado neste período</td></tr>`;
+        corpoTabela.innerHTML = `<tr><td colspan="5" style="text-align: center;"> Nenhum dado encontrado </td></tr>`;
+        corpoTabelaAtividades.innerHTML = `<tr><td colspan="2" style="text-align: center;"> Nenhum dado encontrado </td></tr>`;
         return;
     }
 
     const dadosPorColaborador = {};
+    const contagemAtividadesGeral = {};
 
     //O forEach abaixo vai agrupar dados por colaborador
     dados.forEach(tarefa => {
@@ -187,10 +224,12 @@ function renderizarTabela(dados){
         }
 
         dadosPorColaborador[colab].producao += 1;
-        dadosPorColaborador[colab].tempoTotal += tarefa.tempoGastoMinutos;
+        dadosPorColaborador[colab].tempoTotal += (parseFloat(tarefa.tempoGastoMinutos) || 0);
         dadosPorColaborador[colab].somaPesos += peso;
+        dadosPorColaborador[colab].tempoPonderado += ((parseFloat(tarefa.tempoGastoMinutos) || 0) / peso);
 
-        dadosPorColaborador[colab].tempoPonderado += (tarefa.tempoGastoMinutos / peso);
+        const nomeVisual = nomesAtividadesVisuais[tarefa.atividade] || tarefa.atividade;
+        contagemAtividadesGeral[nomeVisual] = (contagemAtividadesGeral[nomeVisual] || 0) + 1;
     });
 
     //As linhas HTML serão criadas devido ao código abaixo:
@@ -206,11 +245,41 @@ function renderizarTabela(dados){
         <td>${metricas.producao}</td>
         <td>${pesoMedio}</td>
         <td>${tmaReal} min</td>
-        <td><strong style ="color: #660099;">${tmaPorPeso} min</strong></td>
-        `;
+        <td><strong style ="color: #660099;">${tmaPorPeso} min</strong></td>`;
         corpoTabela.appendChild(tr);
+    }
+
+    const atividadesOrdenadas = Object.entries(contagemAtividadesGeral).sort((a,b) => b[1] - a[1]);
+
+    for(const [nomeAtividade, quantidade] of atividadesOrdenadas)
+    {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${nomeAtividade}</td>
+        <td><strong>${quantidade}</strong></td>`;
+        corpoTabelaAtividades.appendChild(tr);
     }
 }
 
 inicializarDashboard();
 });
+
+//Abaixo vai mudar a mensagem de "olá colaborador" para pegar apenas o primeiro nome
+    //da pessoa cadastrada que entrou na aplicação
+    const msgBoasVindas = document.querySelector('.msgBoasVindas');
+    const usuarioLogadoString = sessionStorage.getItem('usuarioLogado');
+
+    if(usuarioLogadoString && msgBoasVindas)
+    {
+        try
+        {
+            const usuarioObjeto = JSON.parse(usuarioLogadoString);
+            const nomeCompleto = usuarioObjeto.nome || usuarioObjeto.login;
+            const primeiroNome = nomeCompleto.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        } catch (e) 
+        {
+            const primeiroNome = usuarioLogadoString.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        }
+    }

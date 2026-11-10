@@ -41,19 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let nomeDoColaborador = 'Sem matrícula';
     const usuarioLogadoString = sessionStorage.getItem('usuarioLogado');
 
-
-
-    if (usuarioLogadoString) {
-        try {
-            const usuarioObjeto = JSON.parse(usuarioLogadoString);
-            nomeDoColaborador = usuarioObjeto.nome || usuarioObjeto.login;
-        } catch (e) {
-            nomeDoColaborador = usuarioLogadoString;
-        }
-    }
-
-
-
     // 3. LÓGICA DE INICIAR ATIVIDADE E CARDS
     const gridAtividades = document.getElementById('gridAtividades');
     const botoesDeAtividades = document.querySelectorAll('.botaoAtividade');
@@ -195,3 +182,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+//Abaixo vai mudar a mensagem de "olá colaborador" para pegar apenas o primeiro nome
+    //da pessoa cadastrada que entrou na aplicação
+    const msgBoasVindas = document.querySelector('.msgBoasVindas');
+    const usuarioLogadoString = sessionStorage.getItem('usuarioLogado');
+
+    if(usuarioLogadoString && msgBoasVindas)
+    {
+        try
+        {
+            const usuarioObjeto = JSON.parse(usuarioLogadoString);
+            const nomeCompleto = usuarioObjeto.nome || usuarioObjeto.login;
+            const primeiroNome = nomeCompleto.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        } catch (e) 
+        {
+            const primeiroNome = usuarioLogadoString.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        }
+    }

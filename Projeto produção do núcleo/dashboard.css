@@ -130,6 +130,7 @@ input:checked + .deslizar:before{
     color: #660099;
     font-family: var(--vivoType);
     font-size: 1em;
+    white-space: nowrap;
 }
 
 .navegacaoProducao{
@@ -146,7 +147,7 @@ input:checked + .deslizar:before{
 }
 
 .elementosListaNavegacao{
-    margin-left: 10rem;
+    margin-left: 8rem;
     justify-content: space-between;
     font-family: var(--vivoType);
     margin-top: 2rem;
@@ -285,4 +286,33 @@ tanto os escritos automaticamente, quanto o da média */
 .tabela-dashboard tr:hover{
     background-color: var(--bg-pagina);
     transition: background-color 0.3s ease;
+}
+
+@media(max-width: 900px){
+    nav{
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .navegacaoProducao{
+        height: auto;
+    }
+
+    .listaNavegacao{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .elementosListaNavegacao{
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .containerMedias, .graficoWrapper{
+        flex-direction: column;
+    }
+    .cardMedia, .graficoContainer, .tabelaContainer{
+        width: 100%;
+    }
 }

@@ -134,3 +134,23 @@ document.addEventListener("DOMContentLoaded", () => {
     //inicializa a tela desenhando os cards
     renderizarColaboradores();
 });
+
+//Abaixo vai mudar a mensagem de "olá colaborador" para pegar apenas o primeiro nome
+    //da pessoa cadastrada que entrou na aplicação
+    const msgBoasVindas = document.querySelector('.msgBoasVindas');
+    const usuarioLogadoString = sessionStorage.getItem('usuarioLogado');
+
+    if(usuarioLogadoString && msgBoasVindas)
+    {
+        try
+        {
+            const usuarioObjeto = JSON.parse(usuarioLogadoString);
+            const nomeCompleto = usuarioObjeto.nome || usuarioObjeto.login;
+            const primeiroNome = nomeCompleto.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        } catch (e) 
+        {
+            const primeiroNome = usuarioLogadoString.split(' ')[0];
+            msgBoasVindas.textContent = `Olá, ${primeiroNome}`;
+        }
+    }

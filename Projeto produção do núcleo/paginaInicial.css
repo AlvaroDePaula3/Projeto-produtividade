@@ -46,6 +46,7 @@ nav{
     padding: 12px 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: background-color 0.4s ease;
+    user-select: none;
 }
 
 nav ul{
@@ -129,7 +130,8 @@ input:checked + .deslizar:before{
 .msgBoasVindas{
     color: #660099;
     font-family: var(--vivoType);
-    font-size: 1em;
+    font-size: 1.2em;
+    white-space: nowrap;
 }
 
 .navegacaoProducao{
@@ -146,7 +148,7 @@ input:checked + .deslizar:before{
 }
 
 .elementosListaNavegacao{
-    margin-left: 10rem;
+    margin-left: 4.5em;
     justify-content: space-between;
     font-family: var(--vivoType);
     margin-top: 2rem;
@@ -271,4 +273,33 @@ input:checked + .deslizar:before{
 .atividade-encerrada{
     opacity: 0.7;
     border-left: 4px solid #28a745;
+}
+
+@media(max-width: 900px){
+    nav{
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .navegacaoProducao{
+        height: auto;
+    }
+
+    .listaNavegacao{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .elementosListaNavegacao{
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .containerMedias, .graficoWrapper{
+        flex-direction: column;
+    }
+    .cardMedia, .graficoContainer, .tabelaContainer{
+        width: 100%;
+    }
 }
