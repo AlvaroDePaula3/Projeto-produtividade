@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let nomeDoColaborador = 'Sem matrícula';
     const usuarioLogadoString = sessionStorage.getItem('usuarioLogado');
 
+    if(usuarioLogadoString){
+        const usuarioObjeto = JSON.parse(usuarioLogadoString);
+        nomeDoColaborador = usuarioObjeto.nome || usuarioObjeto.login;
+    }
     // 3. LÓGICA DE INICIAR ATIVIDADE E CARDS
     const gridAtividades = document.getElementById('gridAtividades');
     const botoesDeAtividades = document.querySelectorAll('.botaoAtividade');

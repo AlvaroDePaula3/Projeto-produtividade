@@ -1,11 +1,9 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
-
-
 
 :root {
     /* essa primeira é a fonte da vivo */
@@ -130,7 +128,7 @@ input:checked + .deslizar:before{
 .msgBoasVindas{
     color: #660099;
     font-family: var(--vivoType);
-    font-size: 1.2em;
+    font-size: 1em;
     white-space: nowrap;
 }
 

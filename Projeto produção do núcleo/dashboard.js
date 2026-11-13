@@ -48,7 +48,7 @@ const pesosAtividades = {
     "escalonamentoRisco": 1.0,
     "escalonamentoIsolamento": 1.0,
     "reportDomus": 1.0,
-    "escalonamentoHL5D": 1.0,
+    "escalonamentoHL5DIsolado": 1.0,
     "acionamentoDesvio": 2.0,
     "reportOlt": 3.0,
     "atualizacaoDeStatus": 1.0,
@@ -77,7 +77,7 @@ const nomesAtividadesVisuais = {
     "escalonamentoRisco":"ESCALONAMENTO RISCO",
     "escalonamentoIsolamento":"ESCALONAMENTO ISOLAMENTO",
     "reportDomus":"REPORT DOMUS/MUNICIPIO",
-    "escalonamentoHL5D":"ESCALONAMENTO HL5D ISOLADO",
+    "escalonamentoHL5DIsolado":"ESCALONAMENTO HL5D ISOLADO",
     "acionamentoDesvio":"ACIONAMENTO DESVIO DE SITES",
     "reportOlt":"REPORT OLT COMUTADA",
     "atualizacaoDeStatus":"ATUALIZAÇÃO DE STATUS (FALHA)",
@@ -148,7 +148,7 @@ function inicializarDashboard() {
         if(atividadesValidas.length > 0)
         {
             const tempoTotal = atividadesValidas.reduce((acc, curr) => acc + (parseFloat(curr.tempoGastoMinutos) || 0), 0);
-            const tempoMedio = Math.round(tempoTotal/atividadesValidas.length);
+            const tempoMedio = (tempoTotal/atividadesValidas.length).toFixed(1);
             document.getElementById("tempoMedioGeral").textContent = `${tempoMedio} min`;
         } else {
             document.getElementById("tempoMedioGeral").textContent = `0 min`;
@@ -190,7 +190,13 @@ function inicializarDashboard() {
             options:{
                 responsive:true,
                 maintainAspectRatio: false,
-                scales: { y: {beginAtZero: true}}
+                scales: { y: 
+                    {beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                            stepSize: 1
+                        }
+                    }}
             }
         });
     }

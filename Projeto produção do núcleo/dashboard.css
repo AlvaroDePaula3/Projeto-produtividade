@@ -230,6 +230,7 @@ tanto os escritos automaticamente, quanto o da média */
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 40px;
+    height: 420px;
 }
 
 .graficoContainer{

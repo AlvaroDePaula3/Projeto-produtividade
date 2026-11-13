@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento | Produtividade</title>
+    <link rel="stylesheet" href="acompanhamento.css">
+</head>
+<body>
+    <nav>
+        <div>
+            <h2 class="msgBoasVindas"> Olá Colaborador</h2>
+        </div>
+        <div class="navegacaoProducao">
+        <ul class="listaNavegacao">
+            <li class="elementosListaNavegacao">
+                <a href="./paginaInicial.html">Tarefas</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <a href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <a href="./acompanhamento.html"> Acompanhamento</a>
+            </li>
+            <li class="elementosListaNavegacao">
+                <label class="temaEscuro">
+                    <input type="checkbox" id="checkTemaEscuro">
+                    <span class="deslizar"></span>
+                </label>
+            </li>
+            <li class="elementosListaNavegacao">
+                <!-- tem um id e uma classe, pois, a classe é para o CSS
+                 o id é para o JS-->
+                 <a href="./Inicio.html">
+                     <button class="botaoSair" id="botaoSair"> Sair </button>
+                 </a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+    <main class="container-acompanhamento">
+        <div class="cabecalho-timeline">
+            <h3>Linha do Tempo de Atividades</h3>
+            <div class="filtro-data">
+                <label for="selectData">Filtrar por Data:</label>
+                <select id="selectData">
+
+                </select>
+            </div>
+        </div>
+
+        <div class="timeline-wrapper">
+            <div class="timeline-header" id="timelineHeader">
+
+            </div>
+            <div class="timeline-body" id="timelineBody">
+
+            </div>
+        </div>
+    </main>
+
+    <div id="tooltipAcompanhamento" class="tooltip-oculto"></div>
+    <script src="acompanhamento.js"></script>
+</body>
+</html>
